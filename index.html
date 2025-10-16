@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3 &amp; MP4 Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>YouTube to MP3 &amp; MP4 Converter</h1>
+            <p>Convert YouTube videos to MP3 audio or MP4 video - Fast &amp; Simple</p>
+        </header>
+
+        <main class="main">
+            <div class="converter-section">
+                <div class="form-group">
+                    <input 
+                        type="url" 
+                        id="youtubeUrl" 
+                        class="form-control url-input" 
+                        placeholder="Paste YouTube URL here..."
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <div class="format-selection">
+                    <button id="mp3Btn" class="btn format-btn active" data-format="mp3">
+                        <span class="format-icon">🎵</span>
+                        <span class="format-text">MP3 Audio</span>
+                    </button>
+                    <button id="mp4Btn" class="btn format-btn" data-format="mp4">
+                        <span class="format-icon">🎬</span>
+                        <span class="format-text">MP4 Video</span>
+                    </button>
+                </div>
+                
+                <div class="quality-selection" id="qualitySelection">
+                    <select id="qualitySelect" class="form-control">
+                        <option value="320">320kbps - High Quality</option>
+                        <option value="192">192kbps - Standard</option>
+                        <option value="128">128kbps - Fast Download</option>
+                    </select>
+                </div>
+                
+                <div class="convert-section">
+                    <button id="convertBtn" class="btn btn--primary btn--lg btn--convert">
+                        <span class="btn-text">Convert</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="status-section">
+                <div id="statusMessage" class="status-message" aria-live="polite"></div>
+                <div id="progressContainer" class="progress-container hidden">
+                    <div class="progress-bar">
+                        <div id="progressBar" class="progress-fill"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <span id="progressText" class="progress-text">0%</span>
+                        <span id="progressStep" class="progress-step"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-section hidden" id="resultSection">
+                <div class="video-info" id="videoInfo">
+                    <div class="video-thumbnail">
+                        <img id="videoThumbnail" src="" alt="Video thumbnail">
+                    </div>
+                    <div class="video-details">
+                        <h3 id="videoTitle">Video Title</h3>
+                        <p id="videoDuration">Duration: 0:00</p>
+                    </div>
+                </div>
+                
+                <div class="download-ready">
+                    <div class="download-info">
+                        <span class="download-icon" id="downloadIcon">🎵</span>
+                        <div class="download-details">
+                            <span class="download-format" id="downloadFormat">MP3 Audio</span>
+                            <span class="download-size" id="downloadSize">Ready for download</span>
+                        </div>
+                    </div>
+                    <a id="downloadBtn" class="btn btn--success btn--lg" download>
+                        Download Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Lightning Fast</h4>
+                        <p>Convert videos in seconds with our optimized processing</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <h4>100% Secure</h4>
+                        <p>Your privacy is protected - no data stored on our servers</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <h4>High Quality</h4>
+                        <p>Choose from multiple quality options for best results</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <h4>Mobile Friendly</h4>
+                        <p>Works perfectly on all devices and platforms</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>Is it really free?</h4>
+                        <p>Yes! Our YouTube converter is completely free with no hidden charges or subscriptions.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What formats are supported?</h4>
+                        <p>We support MP3 audio conversion and MP4 video downloads in multiple quality options.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Is it safe to use?</h4>
+                        <p>Absolutely! We don't store your data and all conversions happen securely in your browser.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>How fast is the conversion?</h4>
+                        <p>Most conversions complete within 10-30 seconds depending on video length and quality.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Hidden elements for processing -->
+        <video id="hiddenVideo" style="display: none;" muted></video>
+        <audio id="hiddenAudio" style="display: none;" muted></audio>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
